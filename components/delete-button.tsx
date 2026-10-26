@@ -1,15 +1,15 @@
 'use client'
 
-export default function DeleteButton() {
+export default function DeleteButton({
+                                         message = 'Delete this post? Its votes and comments will be deleted too. This cannot be undone.',
+                                     }: {
+    message?: string
+}) {
     return (
         <button
             type="submit"
             onClick={e => {
-                if (
-                    !confirm(
-                        'Delete this post? Its votes and comments will be deleted too. This cannot be undone.'
-                    )
-                ) {
+                if (!confirm(message)) {
                     e.preventDefault()
                 }
             }}
